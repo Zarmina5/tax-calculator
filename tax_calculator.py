@@ -180,7 +180,7 @@ def run_calculator():
     # --- Output ---
     print()
     print_separator("═")
-    print(f"  📊  TAX SUMMARY  —  {system['name']}")
+    print(f"   TAX SUMMARY  —  {system['name']}")
     print_separator("═")
     print(f"\n  Gross Income       {fmt(income, currency):>22}")
     print(f"  Total Tax          {fmt(total_tax, currency):>22}")
