@@ -1,7 +1,7 @@
-# ============================================================
+
 #  Tax Calculator — Multi-Country
 #  Supports: Pakistan, USA, UK, UAE, Canada
-# ============================================================
+
 
 TAX_SYSTEMS = {
     "1": {
@@ -113,7 +113,7 @@ def print_bracket_table(details, currency):
     for i, (low, high, rate, taxable, tax) in enumerate(details):
         high_str = "above     " if high == float("inf") else f"{high:>12,.0f}"
         bracket_label = f"{low:>12,.0f} – {high_str}"
-        marker = " ◀" if i == len(details) - 1 else "  "
+        marker = " !" if i == len(details) - 1 else "  "
         print(f"  {bracket_label:<30} {rate*100:>4.0f}%  {taxable:>14,.2f}  {tax:>14,.2f}{marker}")
 
     print(SEP)
@@ -122,7 +122,7 @@ def print_bracket_table(details, currency):
 def run_calculator():
     print()
     print_separator("═")
-    print("  💰  INCOME TAX CALCULATOR  —  Multi-Country")
+    print("    INCOME TAX CALCULATOR  —  Multi-Country")
     print_separator("═")
 
     # --- Country selection ---
@@ -134,7 +134,7 @@ def run_calculator():
         choice = input("\n  Enter number (1–5): ").strip()
         if choice in TAX_SYSTEMS:
             break
-        print("  ⚠  Invalid choice. Please enter a number from 1 to 5.")
+        print("    Invalid choice. Please enter a number from 1 to 5.")
 
     system = TAX_SYSTEMS[choice]
     currency = system["currency"]
@@ -153,7 +153,7 @@ def run_calculator():
             elif s == "2":
                 status = "married"
                 break
-            print("  ⚠  Please enter 1 or 2.")
+            print("   Please enter 1 or 2.")
     else:
         status = "single"
 
@@ -165,11 +165,11 @@ def run_calculator():
             income_str = input(f"\n  Enter annual income ({currency}): ").strip().replace(",", "")
             income = float(income_str)
             if income < 0:
-                print("  ⚠  Income cannot be negative.")
+                print("   Income cannot be negative.")
                 continue
             break
         except ValueError:
-            print("  ⚠  Please enter a valid number.")
+            print("    Please enter a valid number.")
 
     # --- Calculate ---
     total_tax, details = calculate_tax(income, brackets)
@@ -193,7 +193,7 @@ def run_calculator():
         print(f"\n{'─'*55}")
         print("  BRACKET BREAKDOWN")
         print_bracket_table(details, currency)
-        print("  ◀  Your highest bracket")
+        print("   Your highest bracket")
 
     print()
     print_separator("═")
@@ -204,7 +204,7 @@ def main():
         run_calculator()
         again = input("  Calculate again? (y/n): ").strip().lower()
         if again != "y":
-            print("\n  Goodbye! 👋\n")
+            print("\n  Goodbye! \n")
             break
 
 
